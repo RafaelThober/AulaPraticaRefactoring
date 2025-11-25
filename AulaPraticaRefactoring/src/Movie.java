@@ -5,15 +5,15 @@ public class Movie {
     public static final int  NEW_RELEASE = 1;
 
     private String _title;
-    private Price _price; // Novo campo
+    private Price _price;
 
     public Movie(String title, int priceCode) {
         _title = title;
-        setPriceCode(priceCode); // Chama o setter atualizado
+        setPriceCode(priceCode);
     }
 
     public int getPriceCode() {
-        return _price.getPriceCode(); // Delega para a classe Price
+        return _price.getPriceCode();
     }
 
     public void setPriceCode(int arg) {
@@ -34,5 +34,16 @@ public class Movie {
 
     public String getTitle (){
         return _title;
+    }
+
+    public double getCharge(int daysRented) {
+        return _price.getCharge(daysRented);
+    }
+
+    public int getFrequentRenterPoints(int daysRented) {
+        if ((getPriceCode() == Movie.NEW_RELEASE) &&
+                daysRented > 1)
+            return 2;
+        return 1;
     }
 }
